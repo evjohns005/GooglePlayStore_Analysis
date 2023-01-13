@@ -5,7 +5,7 @@
 # ### Team: 
 # Evangeline Johnson </br> Ajibola Adeyemo </br> Sivamma Mettu </br> Adobea Essien
 
-# In[59]:
+# In[38]:
 
 
 import pandas as pd
@@ -13,32 +13,32 @@ import numpy as np
 from numpy import nan
 
 
-# In[60]:
+# In[41]:
 
 
 apps=pd.read_csv("playstore_apps.csv",index_col='App')
 
 
-# In[61]:
+# In[3]:
 
 
 reviews=pd.read_csv("playstore_reviews.csv",index_col='App')
 
 
-# In[62]:
+# In[4]:
 
 
 reviews2=pd.read_csv("reviews2.csv",index_col='App')
 reviews2
 
 
-# In[63]:
+# In[5]:
 
 
 apps.head()
 
 
-# In[64]:
+# In[6]:
 
 
 reviews.head()
@@ -47,20 +47,20 @@ reviews.head()
 # ## Focusing on the data on Playstore Apps. 
 # ### Removing Duplicates & Taking a look at the formatting.
 
-# In[65]:
+# In[7]:
 
 
 apps.drop_duplicates(keep='first',inplace=True)
 apps.head()
 
 
-# In[66]:
+# In[8]:
 
 
 apps.info()
 
 
-# In[67]:
+# In[9]:
 
 
 # category column
@@ -68,49 +68,49 @@ apps.info()
 apps['Category'].unique()
 
 
-# In[68]:
+# In[10]:
 
 
 apps[apps['Category']=='1.9']
 
 
-# In[69]:
+# In[11]:
 
 
 apps.drop('Life Made WI-Fi Touchscreen Photo Frame',inplace=True)
 
 
-# In[70]:
+# In[12]:
 
 
 apps['Category'].unique()
 
 
-# In[71]:
+# In[13]:
 
 
 apps['Size'].unique()
 
 
-# In[75]:
+# In[14]:
 
 
 apps['Type'].unique()
 
 
-# In[76]:
+# In[15]:
 
 
 apps['Content Rating'].unique()
 
 
-# In[77]:
+# In[16]:
 
 
 apps['Genres'].unique()
 
 
-# In[78]:
+# In[17]:
 
 
 apps['Last Updated'].unique()
@@ -118,93 +118,93 @@ apps['Last Updated'].unique()
 
 # ## Updating Column 'Last Updated' to Date format:
 
-# In[ ]:
+# In[18]:
 
 
 apps['Last Updated'] = pd.to_datetime(apps['Last Updated'])
 
 
-# In[80]:
+# In[19]:
 
 
 apps.info()
 
 
-# In[81]:
+# In[20]:
 
 
 apps['Current Ver'].unique()
 
 
-# In[82]:
+# In[21]:
 
 
 apps['Android Ver'].unique()
 
 
-# In[83]:
+# In[33]:
 
 
-apps.rename(columns={'Android Ver' : 'Android_Version', 'Current Ver' : 'Current_Version'}, inplace=True)
+apps.rename(columns={'Android Ver' : 'Android_Version', 'Current Ver' : 'Current_Version', 'Content Rating' : 'Content_Rating', 'Last Updated' : 'Last_Updated'}, inplace=True)
 
 
-# In[84]:
+# In[35]:
 
 
-apps.head()
+apps.dropna()
 
 
-# In[85]:
+# In[36]:
 
 
-# apps.to_csv('cleaned_apps.csv')
+apps.to_csv('cleaned_apps.csv')
 
 
 # # Reviews Table
 
-# In[97]:
+# In[25]:
 
 
 reviews2.drop_duplicates(keep=False,inplace=True)
 
 
-# In[96]:
+# In[26]:
 
 
 reviews2.tail()
 
 
-# In[88]:
+# In[27]:
 
 
 reviews2.info()
 
 
-# In[89]:
+# In[28]:
 
 
 reviews2['Translated_Reviews'].unique()
 
 
-# In[90]:
+# In[29]:
 
 
 reviews2['Sentiment'].unique()
 
 
-# In[91]:
+# In[30]:
 
 
 reviews2['Sentiment_Polarity'].unique()
 
 
-# In[92]:
+# In[31]:
 
 
 reviews2['Sentiment_Subjectivity'].unique()
 
 
-# In[94]:
+# In[32]:
 
 
 reviews2.to_csv('cleaned_reviews2.csv')
