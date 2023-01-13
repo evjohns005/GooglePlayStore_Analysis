@@ -118,7 +118,7 @@ apps['Last Updated'].unique()
 
 # ## Updating Column 'Last Updated' to Date format:
 
-# In[18]:
+# In[ ]:
 
 
 apps['Last Updated'] = pd.to_datetime(apps['Last Updated'])
